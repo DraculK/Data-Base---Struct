@@ -1,0 +1,30 @@
+table Professor{
+  name varchar
+  CPF varchar
+  RG varchar
+  gender varchar
+  email varchar
+  birth date
+  pl varchar
+  exp int
+}
+
+table Aluno{
+  name varchar
+  CPF varchar
+  RG varchar
+  birth date
+  address varchar
+}
+
+table Cidade{
+  name varchar
+}
+
+table Estado{
+  name varchar
+}
+
+Ref: Aluno.address > Estado.name
+Ref: Aluno.address > Cidade.name
+Ref: Aluno.name > Professor.name

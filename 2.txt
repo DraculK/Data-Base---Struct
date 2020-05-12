@@ -1,0 +1,52 @@
+table Dentistas{
+  name varchar
+  CPF varchar
+  RG varchar
+  gender varchar
+  email varchar
+  birth date 
+  CRO varchar
+  area_atuacao varchar
+}
+
+table Sala{
+  ocupada boolean
+}
+
+table Clientes{
+  name varchar
+  CPF varchar
+  RG varchar
+  gender varchar
+  email varchar
+  birth date 
+}
+
+table Marcar{
+  data date
+  sala varchar
+  cliente varchar
+  dentista varchar
+}
+
+table DentistaCliente{
+  Consulta boolean
+  tipo_consulta varchar
+}
+//Nessa primeira referenciação imaginei como se a CRO de um dentista tivesse conectada à várias consultas que ele pode fazer. Deixei a variável de consulta como boolean, pois ele pode ou não ter a consulta.
+Ref: Dentistas.CRO < DentistaCliente.Consulta
+
+//Nessa segunda referenciação imaginei que um cliente possa fazer N consultas e escolher que tipo(s) de consulta(s) ele quer fazer.
+Ref: Clientes.name < DentistaCliente.tipo_consulta
+
+//Nessa referenciação imaginei que N dentistas possam ocupar uma sala. A variável da sala está boolean porque a sala pode ou não estar ocupada.
+Ref: Dentistas.CRO > Sala.ocupada
+
+//Aqui, o cliente marca a consulta e pode ser atendido nessa consulta por N dentistas, já que N dentistas ficam em uma sala, por exemplo.
+Ref: Dentistas.CRO > Marcar.dentista
+
+//Já aqui, o cliente em questão pode marcar uma consulta para mais de uma pessoa, não é necessariamente só pra ele, então é uma relação 1 - N
+Ref: Marcar.cliente > Clientes.name
+
+//Nessa relação eu deixei 1 - 1, pois quando o cliente marcar a consulta, essa consulta só pode ser executada em uma sala por vez.
+Ref: Marcar.sala - Sala.ocupada

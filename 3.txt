@@ -1,0 +1,48 @@
+table voo{
+  h_saida varchar
+  hp_saida varchar
+  h_chegada varchar
+  hp_chegada varchar
+}
+
+table registro{
+  origem varchar
+  destino varchar
+}
+
+table piloto{
+  nome varchar
+  CPF varchar
+  RG varchar
+  email varchar
+  nascimento date
+  ANAC varchar
+}
+
+table passageiros{
+  nome varchar
+  CPF varchar
+  RG varchar
+  sexo varchar
+  email varchar
+  nascimento date
+}
+
+table aviao{
+  modelo varchar
+  n_registro int
+  assentos int
+}
+//Aqui, 1 piloto para N voos.
+Ref: piloto.ANAC < voo.h_saida
+
+//Nesses dois, considerando que não é um voo com escala, o voo tem um horário de saída para uma origem, assim como tem um horário de chegada para uma destino, por isso 1 - 1. Caso fosse com escala seria 1 - N.
+Ref: voo.h_saida - registro.origem
+Ref: voo.h_chegada - registro.destino
+
+//Aqui, um voo para N passageiros.
+Ref: voo.h_saida < passageiros.nome
+
+//Aqui, imaginei que um avião pode fazer N voos, mas um voo só pode ser feito por um avião.
+Ref: voo.h_saida > aviao.n_registro
+
