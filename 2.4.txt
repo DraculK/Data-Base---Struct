@@ -1,0 +1,9 @@
+ALTER TABLE Actors
+    ADD birth_date date;
+
+UPDATE Actors
+    SET birth_date = '1943-06-13' where actor_name='Malcolm McDowell';
+UPDATE Actors
+    SET birth_date = '1929-04-10' where idactor=2;
+
+/*idactor=2 seria o Max von Sydow*/
