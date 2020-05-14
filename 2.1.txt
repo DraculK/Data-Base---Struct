@@ -1,3 +1,5 @@
+CREATE DATABASE hollywood;
+
 CREATE TABLE movies(
     idMovie SERIAL,
     movie_name varchar(50),
