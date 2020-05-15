@@ -3,7 +3,7 @@ CREATE DATABASE hollywood;
 CREATE TABLE movies(
     idMovie SERIAL,
     movie_name varchar(50),
-    release_year date
+    release_year date,
     PRIMARY KEY (idMovie)
 );
 
