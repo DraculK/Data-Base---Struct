@@ -2,4 +2,4 @@ SELECT * FROM Movies
     Where release_year < '2011-01-01';
 
 SELECT * FROM Characters
-    Where character_name NOT LIKE 'C%'
+    Where character_name NOT LIKE 'C%';
